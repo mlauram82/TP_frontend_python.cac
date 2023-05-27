@@ -13,24 +13,27 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 
   <!-- Template Main CSS File -->
   <link href="style.css" rel="stylesheet">
 
-  
+
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container d-flex align-items-center justify-content-between"
+      style="display: flex; flex-wrap: wrap; justify-content: space-between;">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>recetasCodoaCodo</span></a></h1>
-        
+        <h1 class="text-light"><a href="index.html"><span>Recetas Codo a Codo</span></a></h1>
+
       </div>
 
       <nav id="navbar" class="navbar">
@@ -39,7 +42,7 @@
           <li><a class="nav-link scrollto" href="#about">sobre nosotros</a></li>
           <li><a class="nav-link scrollto" href="#recetas">Recetas</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-            
+
           <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
@@ -61,8 +64,8 @@
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img"> aqui encontrara las mejores recetas de cocina
-          <img src="th.jpg" class="img-fluid animated" alt="cocina" >
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src="th.jpg" class="img-fluid animated" alt="cocina">
         </div>
       </div>
     </div>
@@ -75,14 +78,15 @@
     <section id="about" class="about">
       <div class="container">
 
-        <div class="row justify-content-between">
+        <div class="row justify-content-between cocineros">
           <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
             <img src="th (1)svg.jpg" class="img-fluid" alt="" data-aos="zoom-in">
           </div>
           <div class="col-lg-6 pt-5 pt-lg-0">
             <h3 data-aos="fade-up">Los Cocineros</h3>
             <p data-aos="fade-up" data-aos-delay="100">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Duis aute irure dolor in reprehenderit
             </p>
             <div class="row">
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -103,49 +107,33 @@
     </section><!-- End About Section -->
 
     <!-- ======= recetas Section ======= -->
+
     <section id="recetas" class="recetas section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Recetas</h2>
-          <p>Las mejores recetas</p>
+      <div class="container" data-aos="fade-up" id="app">
+        <div v-if="error">
+          <p>Se produjo un error</p>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
-            </div>
+        <div v-else="error">
+          <div class="section-title">
+            <h2>Recetas</h2>
+            <p>Nuestras selección recetas</p>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+          <div class="row" v-for="elemento of recipesAll">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box">
+                <img :src="elemento.photoUrl" alt="receta" class="imgRecetas">
+                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                <h4 class="title">{{elemento.title}}</h4>
+                <h5 class="title">Tipo de receta: {{elemento.course}}</h5>
+                <p class="description"></p><a :href="elemento.url">Enlace a la receta!</a>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
-            </div>
           </div>
 
         </div>
-
       </div>
     </section><!-- End recetas Section -->
 
@@ -169,13 +157,15 @@
           </div>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200"
+          style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center;">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="food.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bi bi-plus"></i></a>
+                <a href="food.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -189,7 +179,8 @@
             <div class="portfolio-wrap">
               <img src="food2.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
+                <a href="food2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -203,7 +194,8 @@
             <div class="portfolio-wrap">
               <img src="food3.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bi bi-plus"></i></a>
+                <a href="food3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -217,7 +209,8 @@
             <div class="portfolio-wrap">
               <img src="food4.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bi bi-plus"></i></a>
+                <a href="food4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -231,7 +224,8 @@
             <div class="portfolio-wrap">
               <img src="food5.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bi bi-plus"></i></a>
+                <a href="food5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -245,7 +239,8 @@
             <div class="portfolio-wrap">
               <img src="food6.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
+                <a href="food6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -259,7 +254,8 @@
             <div class="portfolio-wrap">
               <img src="food7.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bi bi-plus"></i></a>
+                <a href="food7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -273,7 +269,8 @@
             <div class="portfolio-wrap">
               <img src="food8.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bi bi-plus"></i></a>
+                <a href="food8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -287,7 +284,8 @@
             <div class="portfolio-wrap">
               <img src="food9.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="food9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
+                <a href="food9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i
+                    class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
@@ -334,13 +332,16 @@
                 <p>+1 5589 55488 55s</p>
               </div>
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25382.641861130054!2d-59.146240000000006!3d-37.32284885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1685142013492!5m2!1ses!2sar"
+                frameborder="0" style="border:0; width: 100%; height: 450px;" allowfullscreen></iframe>
+
             </div>
 
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="" method="" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -350,21 +351,18 @@
                   <label for="name">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
+
+                <div class="form-group mt-3">
+                  <label for="name">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="name">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message" required></textarea>
+                </div>
+                
+                <div class="text-center"><button type="" onclick="validar()">Send Message</button></div>
               </div>
-              <div class="form-group mt-3">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
 
@@ -397,26 +395,23 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>recetasCodoaCodo
+            <h3>Recetas Codo a Codo</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <br>
+              ARGENTINA <br><br>
+              <strong>Telefono</strong> +54 911 11111111<br>
+              <strong>Email:</strong> info@ejemplo.com.ar<br>
             </p>
           </div>
 
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <h4>Nuestras Redes Sociales</h4>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://twitter.com/" class="twitter"><img src="twitter.png" alt=""></a>
+              <a href="https://facebook.com/" class="facebook"><img src="facebook.png" alt=""></a>
+              <a href="https://instagram.com/" class="instagram"><img src="instagram.png" alt=""></a>
+              <a href="https://linkedin.com/" class="linkedin"><img src="linkedin.png" alt=""></a>
             </div>
           </div>
 
@@ -426,10 +421,12 @@
 
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
 
-  <!-- Template Main JS File -->
+  <!-- JS Files -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="javascript.js"></script>
 
 </body>

@@ -1,7 +1,4 @@
-**
-
-*/
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -90,7 +87,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -99,7 +96,7 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -109,7 +106,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -138,93 +135,93 @@
   /**
    * Porfolio isotope and filter
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-      });
+  // window.addEventListener('load', () => {
+  //   let portfolioContainer = select('.portfolio-container');
+  //   if (portfolioContainer) {
+  //     let portfolioIsotope = new Isotope(portfolioContainer, {
+  //       itemSelector: '.portfolio-item',
+  //       layoutMode: 'fitRows'
+  //     });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+  //     let portfolioFilters = select('#portfolio-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+  //     on('click', '#portfolio-flters li', function(e) {
+  //       e.preventDefault();
+  //       portfolioFilters.forEach(function(el) {
+  //         el.classList.remove('filter-active');
+  //       });
+  //       this.classList.add('filter-active');
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
+  //       portfolioIsotope.arrange({
+  //         filter: this.getAttribute('data-filter')
+  //       });
+  //       portfolioIsotope.on('arrangeComplete', function() {
+  //         AOS.refresh()
+  //       });
+  //     }, true);
+  //   }
 
-  });
+  // });
 
   /**
    * Initiate portfolio lightbox 
    */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
+  // const portfolioLightbox = GLightbox({
+  //   selector: '.portfolio-lightbox'
+  // });
 
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+  // new Swiper('.portfolio-details-slider', {
+  //   speed: 400,
+  //   loop: true,
+  //   autoplay: {
+  //     delay: 5000,
+  //     disableOnInteraction: false
+  //   },
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     type: 'bullets',
+  //     clickable: true
+  //   }
+  // });
 
   /**
    * Clients Slider
    */
-  new Swiper('.clients-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 40
-      },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 60
-      },
-      640: {
-        slidesPerView: 4,
-        spaceBetween: 80
-      },
-      992: {
-        slidesPerView: 6,
-        spaceBetween: 120
-      }
-    }
-  });
+  // new Swiper('.clients-slider', {
+  //   speed: 400,
+  //   loop: true,
+  //   autoplay: {
+  //     delay: 5000,
+  //     disableOnInteraction: false
+  //   },
+  //   slidesPerView: 'auto',
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     type: 'bullets',
+  //     clickable: true
+  //   },
+  //   breakpoints: {
+  //     320: {
+  //       slidesPerView: 2,
+  //       spaceBetween: 40
+  //     },
+  //     480: {
+  //       slidesPerView: 3,
+  //       spaceBetween: 60
+  //     },
+  //     640: {
+  //       slidesPerView: 4,
+  //       spaceBetween: 80
+  //     },
+  //     992: {
+  //       slidesPerView: 6,
+  //       spaceBetween: 120
+  //     }
+  //   }
+  // });
 
   /**
    * Animation on scroll
@@ -239,3 +236,73 @@
   });
 
 })()
+
+
+/* --- VUE --- */
+
+const { createApp } = Vue
+
+createApp({
+  data() {
+    return {
+      message: 'Hello Vue!',
+      url: 'https://api.sampleapis.com/recipes/recipes',
+      recipesAll: [],
+      error: false,
+    }
+  },
+  methods: {
+    fetchData(url) {  // necesite un async y await porque seguia de largo y no me cargaba el array recipes ni las listas desplegables
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          this.recipesAll = data
+        })
+        .catch(error => alert("Ups... se produjo un error: " + error))
+    },
+  },
+  created() {
+    this.fetchData(this.url)                                                       //   
+  }
+}).mount('#app')
+
+
+/* --- Validar formulario --- */
+
+function validar() {
+  let logica = true
+  let nombre = document.getElementById("name").value
+  let email = document.getElementById("email").value
+  let asunto = document.getElementById("subject").value
+  let mensaje = document.getElementById("message").value
+
+  if (nombre.length === 0) {
+    alert("nombre obligatorio")
+    logica = false
+  }
+  if (email.length === 0) {
+    alert("email obligatorio")
+    logica = false
+  }
+  if (asunto.length === 0) {
+    alert("asunto obligatorio")
+    logica = false
+  }
+  if (mensaje.length === 0) {
+    alert("mensaje obligatorio")
+    logica = false
+  }
+  if (logica) {
+    grabar()
+  }
+
+}
+
+function grabar() {
+  alert("Enviando ....")
+  document.getElementById("nombre").value = ""
+  document.getElementById("email").value = ""
+  document.getElementById("subject").value = ""
+  document.getElementById("message").value = ""
+}
