@@ -1,0 +1,348 @@
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>recetasCodoaCodo</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="Food-Icons.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between"
+      style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html"><span>Recetas Codo a Codo</span></a></h1>
+
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">sobre nosotros</a></li>
+          <li><a class="nav-link scrollto" href="#recetas">Recetas</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+
+          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Las Mejores recetas </h1>
+          <h2>comidas y postres</h2>
+          <div>
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src="th.jpg" class="img-fluid animated" alt="cocina">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= sobre nosotros Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row justify-content-between cocineros">
+          
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h1 data-aos="fade-up"><center>Los Cocineros</center> </h1>
+            
+          <section>
+          <div class="container-about">
+              <div class="row">
+                  <div class="card-about col-md-4">
+                      <div class="card">
+                          <img src="nar.jpg" class="card-img-top" alt="Narda Lepes">
+                          <div class="card-body">
+                              <div class="badges-contenedor">
+                              <span class="badge text-bg-warning"></span>
+                              <span class="badge text-bg-info"></span>
+                              </div>
+                              <h5 class="card-title">Narda Lepes</h5>
+                              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, alias, provident magni neque ullam esse explicabo est similique soluta dolorem totam at magnam obcaecati, facilis excepturi. Possimus quasi suscipit a!</p>
+                          </div>
+                      </div>
+                  </div> 
+                  <div class="card-about col-md-4">
+                      <div class="card">
+                      <img src="santis.jpg" class="card-img-top" alt="Donato De Santis">
+                          <div class="card-body">
+                              <div class="badges-contenedor">
+                                  <span class="badge text-bg-warning"></span>
+                                  <span class="badge text-bg-info"></span>
+                              </div>
+                              <h5 class="card-title">Donatto De Santis</h5>
+                              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, alias, provident magni neque ullam esse explicabo est similique soluta dolorem totam at magnam obcaecati, facilis excepturi. Possimus quasi suscipit a!</p>
+                          </div>
+                      </div>
+                  </div>  
+                  <div class="card-about col-md-4">
+                      <div class="card">
+                      <img src="doii.jpg" class="card-img-top" alt="Doly Irigoyen">
+                          <div class="card-body">
+                              <div class="badges-contenedor">
+                                  <span class="badge text-bg-secondary"></span>
+                                  <span class="badge text-bg-danger"></span>
+                              </div>
+                              <h5 class="card-title">Doly Irigoyen</h5>
+                              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, alias, provident magni neque ullam esse explicabo est similique soluta dolorem totam at magnam obcaecati, facilis excepturi. Possimus quasi suscipit a!</p>
+                          </div>
+                      </div>
+                  </div>  
+              </div>
+          </div>
+          </section>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= recetas Section ======= -->
+
+    <section id="recetas" class="recetas section-bg">
+      <div class="container" data-aos="fade-up" id="app">
+        <div v-if="error">
+          <p>Se produjo un error</p>
+        </div>
+
+        <div v-else="error">
+          <div class="section-title">
+            <h2>Recetas</h2>
+            <p>Nuestras selección recetas</p>
+          </div>
+
+          <div class="row" v-for="elemento of recipesAll">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box">
+                <img :src="elemento.photoUrl" alt="receta" class="imgRecetas">
+                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                <h4 class="title">{{elemento.title}}</h4>
+                <h5 class="title">Tipo de receta: {{elemento.course}}</h5>
+                <p class="description"></p><a :href="elemento.url">Enlace a la receta!</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End recetas Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Mira nuestras fotos de recetas</p>
+        </div>
+
+       
+        <div class="slide">
+          <div class="slide-inner">
+              <input class="slide-open" type="radio" id="slide-1" 
+                    name="slide" aria-hidden="true" hidden="" checked="checked">
+              <div class="slide-item">
+                  <img src="food.jpg">
+              </div>
+              <input class="slide-open" type="radio" id="slide-2" 
+                    name="slide" aria-hidden="true" hidden="">
+              <div class="slide-item">
+                  <img src="food2.jpg">
+              </div>
+              <input class="slide-open" type="radio" id="slide-3" 
+                    name="slide" aria-hidden="true" hidden="">
+              <div class="slide-item">
+                  <img src="food3.jpg">
+              </div>
+              <label for="slide-3" class="slide-control prev control-1">‹</label>
+              <label for="slide-2" class="slide-control next control-1">›</label>
+              <label for="slide-1" class="slide-control prev control-2">‹</label>
+              <label for="slide-3" class="slide-control next control-2">›</label>
+              <label for="slide-2" class="slide-control prev control-3">‹</label>
+              <label for="slide-1" class="slide-control next control-3">›</label>
+              <ol class="slide-indicador">
+                  <li>
+                      <label for="slide-1" class="slide-circulo">•</label>
+                  </li>
+                  <li>
+                      <label for="slide-2" class="slide-circulo">•</label>
+                  </li>
+                  <li>
+                      <label for="slide-3" class="slide-circulo">•</label>
+                  </li>
+              </ol>
+          </div>
+      
+          
+        
+    </section><!-- End Portfolio Section -->
+
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>Contact us the get started</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25382.641861130054!2d-59.146240000000006!3d-37.32284885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1685142013492!5m2!1ses!2sar"
+                frameborder="0" style="border:0; width: 100%; height: 450px;" allowfullscreen></iframe>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <form action="" method="" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group col-md-6 mt-3 mt-md-0">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+
+                <div class="form-group mt-3">
+                  <label for="name">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="name">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message" required></textarea>
+                </div>
+                
+                <div class="text-center"><button type="" onclick="validar()">Send Message</button></div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Recetas Codo a Codo</h3>
+            <p>
+              <br>
+              ARGENTINA <br><br>
+              <strong>Telefono</strong> +54 911 11111111<br>
+              <strong>Email:</strong> info@ejemplo.com.ar<br>
+            </p>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nuestras Redes Sociales</h4>
+            <div class="social-links mt-3">
+              <a href="https://twitter.com/" class="twitter"><img src="twitter.png" alt=""></a>
+              <a href="https://facebook.com/" class="facebook"><img src="facebook.png" alt=""></a>
+              <a href="https://instagram.com/" class="instagram"><img src="instagram.png" alt=""></a>
+              <a href="https://linkedin.com/" class="linkedin"><img src="linkedin.png" alt=""></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- JS Files -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="javascript.js"></script>
+
+</body>
+
+</html>
