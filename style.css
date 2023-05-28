@@ -550,6 +550,9 @@ section {
   overflow: hidden;
   width: 100%;
   height: calc( 300px + 3em);
+  display: flex;
+    justify-content: center;
+    align-items: center
 }
 .slide-open:checked + .slide-item {
   position: static;
